@@ -25,6 +25,9 @@ def Mix(list, rev):
         if 0 in list:
             list.remove(0)
     if rev :
+        for obj in list:
+            if 0 in list:
+                list.remove(0)
 
     return list
 
@@ -40,24 +43,25 @@ print(Mix([4,2,2,4]))
 def click_on_letter(event):
     if event.keysym =='w':
         print('w is up')
+
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
             grid_2048[line] = Mix(grid_2048[line])
         objRefresh()
         print('you clicked left')
+
     if event.keysym == 's':
         print('s is down')
+
     if event.keysym == 'Right' or event.keysym == 'd':
         for line in range(len(grid_2048)):
             grid_2048[line] = Mix(grid_2048[line])
         objRefresh()
         print('d is right')
+
     if event.keysym =='Down':
         print('you clicked on down')
-    if event.keysym =='Right':
-       print('you clicked on Right')
-    if event.keysym =='Up':
-        print('you clicked on Up')
+
 
 # Définir la fenêtre
 window_width = 800
