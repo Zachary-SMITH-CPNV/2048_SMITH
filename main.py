@@ -1,12 +1,13 @@
-# 2048 V02
-# Auteur : Zachary Smith
-# Dernière modif: 24.02.2023
+# 2048 V03
+# Author : Zachary Smith
+# Classe : SC-C1a
+# Last modification: 16.03.2023
 
 from tkinter import *
 import tkinter.font
 
 
-# Fonction pour tassage
+# Fonction for number combining
 def Mix(list, rev):
     # Si il y à un 0
     for obj in list:
@@ -30,8 +31,8 @@ def Mix(list, rev):
     return list
 
 
-# ------------------
-
+# -------------------------------------------------------------------------------
+# Fonction for movements
 def click_on_letter(event):
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
@@ -64,8 +65,8 @@ def click_on_letter(event):
         objRefresh()
         print('you clicked on down')
 
-
-# Définir la fenêtre
+# -------------------------------------------------------------------------------
+# window size
 window_width = 800
 window_height = 800
 window = Tk()
@@ -73,29 +74,29 @@ window.geometry(f"{window_width}x{window_height}")
 window.title("2048 By SMITH Zachary | V0.2")
 window.bind('<Key>', click_on_letter)
 
-# Calcul de taille d'écran
+# Defining center of screen
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 
-# centrer la fenêtre dans l'écran
+# centering window on screen
 x_left = int(screen_width/2 - window_width/2)
 y_top = int(screen_height/2 - window_height/2)
 #
 window.geometry("+{}+{}".format(x_left, y_top))
 
-# Variable pour fenêtre de base
+# Variable for base of window
 
 grid_2048= [[2, 4, 4, 16], [32, 64, 0, 256], [512, 1024, 2048, 0], [8, 0, 128, 0]]
 labels = [[None, None, None, None], [None, None, None, None], [None, None, None, None],[None, None, None, None]]
-# Dictionnaire pour couleurs
+# Dictionary for colors
 
-numbers_color = {2:'#FFE599', 4:'#F9CB9C',8:'#F1C232',16:'#FFD966',32:'#FF9900',64:'#EA9999',128:'#CF2A27',256:'#990000',512:'#990000',1024:'blue',2048:'#FF00FF'}
+numbers_color = {2:'#e8ffff', 4:'#d9f1ff', 8:'#bfe6ff',16:'#8cd3ff',32:'#59bfff',64:'#26abff',128:'#0da2ff',256:'#009dff',512:'#405db8', 1024: '#36358f', 2048:'#1034a6'}
 
-# Lancement de la fenêtre
+# Start of window
 if __name__ == '__main__':
 
-
-# Fenêtre 2048
+# -------------------------------------------------------------------------------
+# window 2048
     if __name__ == '__main__':
         def objRefresh():
             for line in range(len(grid_2048)):
@@ -103,14 +104,14 @@ if __name__ == '__main__':
                     # creation of each label without placing it
                     if grid_2048[line][col] != 0:
                         labels[line][col] = tkinter.Label(text=grid_2048[line][col], width=10, height=5, borderwidth=1, relief="solid",
-                                                          font=("Arial", 12), bg="yellow")
+                                                          font=("Arial", 12), bg='#e6e6f1')
                     else:
                         labels[line][col] = tkinter.Label(text="", width=10, height=5, borderwidth=1, relief="solid",
-                                                          font=("Arial", 12), bg="yellow")
+                                                          font=("Arial", 12), bg='#e6e6f1')
                     # we set the label in the windows with a virtual grid
                     labels[line][col].grid(row=line, column=col)
                     try:labels[line][col].config(bg=numbers_color[int(grid_2048[line][col])])
-                    except:labels[line][col].config(bg="Yellow")
+                    except:labels[line][col].config(bg='#e6e6f1')
         objRefresh()
 window.bind('<Key>',click_on_letter)
 
