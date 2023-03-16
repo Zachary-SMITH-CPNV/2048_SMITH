@@ -16,43 +16,26 @@ def Mix(list, rev):
         if list[obj] == list[obj + 1]:
             list[obj] += list[obj + 1]
             list[obj + 1] = 0
-    if 0 in list:
-        list.remove(0)
-    while len(list) < 5:
-        list.append(0)
-    list.remove(0)
     for obj in list:
         if 0 in list:
             list.remove(0)
     if rev:
-        for obj in list:
-            if 0 in list:
-                list.remove(0)
-    for obj in range(len(list) - 1):
-        if list[obj] == list [obj +1]:
-            list[obj] += list[obj + 1]
-            list[obj + 1] = 0
-    if 0 in list:
-        list. remove(0)
-    while len(list) < 4:
-        if rev:
-            list.insert(0, 0)
-        else:
+        totalnumbers = 4 -len(list)
+        while totalnumbers != 0:
+            totalnumbers -= 1
+            list.insert(0,0)
+    else:
+        while len(list) < 4:
             list.append(0)
-    for obj in list:
-        if 0 in list:
-            list.remove(0)
     return list
+
 
 # ------------------
 
 def click_on_letter(event):
-    if event.keysym =='w':
-        print('you clicked up')
-
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
-            grid_2048[line] = Mix(grid_2048[line],False)
+            grid_2048[line] = Mix(grid_2048[line], False)
         objRefresh()
         print('you clicked left')
 
@@ -62,7 +45,23 @@ def click_on_letter(event):
         objRefresh()
         print('you clicked right')
 
-    if event.keysym =='Down':
+    if event.keysym == 'w' or event.keysym == 'Up':
+        for col in range(len(grid_2048)):
+            column = [grid_2048[row][col] for row in range(len(grid_2048))]
+            mixed_column = Mix(column, False)
+            for row in range(len(grid_2048)):
+                grid_2048[row][col] = mixed_column[row]
+        objRefresh()
+        print('you clicked up')
+
+    if event.keysym == 's' or event.keysym == 'Down':
+        for col in range(len(grid_2048)):
+            column = [grid_2048[row][col] for row in range(len(grid_2048))]
+            reversed_column = column[::-1]
+            mixed_column = Mix(reversed_column, False)
+            for row in range(len(grid_2048)):
+                grid_2048[row][col] = mixed_column[::-1][row]
+        objRefresh()
         print('you clicked on down')
 
 
