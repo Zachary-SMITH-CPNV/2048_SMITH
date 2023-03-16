@@ -24,40 +24,43 @@ def Mix(list, rev):
     for obj in list:
         if 0 in list:
             list.remove(0)
-    if rev :
+    if rev:
         for obj in list:
             if 0 in list:
                 list.remove(0)
-
+    for obj in range(len(list) - 1):
+        if list[obj] == list [obj +1]:
+            list[obj] += list[obj + 1]
+            list[obj + 1] = 0
+    if 0 in list:
+        list. remove(0)
+    while len(list) < 4:
+        if rev:
+            list.insert(0, 0)
+        else:
+            list.append(0)
+    for obj in list:
+        if 0 in list:
+            list.remove(0)
     return list
 
-print(Mix([2,2,2,2]))
-print(Mix([2,2,2,0]))
-print(Mix([0,2,2,0]))
-print(Mix([4,4,2,2]))
-print(Mix([4,2,4,0]))
-print(Mix([0,0,0,2]))
-print(Mix([4,2,2,4]))
 # ------------------
 
 def click_on_letter(event):
     if event.keysym =='w':
-        print('w is up')
+        print('you clicked up')
 
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
-            grid_2048[line] = Mix(grid_2048[line])
+            grid_2048[line] = Mix(grid_2048[line],False)
         objRefresh()
         print('you clicked left')
 
-    if event.keysym == 's':
-        print('s is down')
-
     if event.keysym == 'Right' or event.keysym == 'd':
         for line in range(len(grid_2048)):
-            grid_2048[line] = Mix(grid_2048[line])
+            grid_2048[line] = Mix(grid_2048[line],True)
         objRefresh()
-        print('d is right')
+        print('you clicked right')
 
     if event.keysym =='Down':
         print('you clicked on down')
