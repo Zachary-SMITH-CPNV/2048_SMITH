@@ -37,9 +37,9 @@ def Mix(list, rev):
 # Variable for movement
 nb_movement = 0
 
+# fonction for movements
 def click_on_letter(event):
     global nb_movement
-    # Variable for movements
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
             grid_2048[line] = Mix(grid_2048[line], False)
