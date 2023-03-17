@@ -3,8 +3,10 @@
 # Classe : SC-C1a
 # Last modification: 16.03.2023
 
+# Modules imported
 from tkinter import *
 import tkinter.font
+import random
 
 
 # Fonction for number combining
@@ -32,19 +34,27 @@ def Mix(list, rev):
 
 
 # -------------------------------------------------------------------------------
-# Fonction for movements
+# Variable for movement
+nb_movement = 0
+
 def click_on_letter(event):
+    global nb_movement
+    # Variable for movements
     if event.keysym == 'Left'or event.keysym == 'a':
         for line in range(len(grid_2048)):
             grid_2048[line] = Mix(grid_2048[line], False)
         objRefresh()
         print('you clicked left')
+        nb_movement += 1
+
 
     if event.keysym == 'Right' or event.keysym == 'd':
         for line in range(len(grid_2048)):
             grid_2048[line] = Mix(grid_2048[line],True)
         objRefresh()
         print('you clicked right')
+        nb_movement += 1
+
 
     if event.keysym == 'w' or event.keysym == 'Up':
         for col in range(len(grid_2048)):
@@ -54,6 +64,9 @@ def click_on_letter(event):
                 grid_2048[row][col] = mixed_column[row]
         objRefresh()
         print('you clicked up')
+        nb_movement += 1
+
+
 
     if event.keysym == 's' or event.keysym == 'Down':
         for col in range(len(grid_2048)):
@@ -62,8 +75,21 @@ def click_on_letter(event):
             mixed_column = Mix(reversed_column, False)
             for row in range(len(grid_2048)):
                 grid_2048[row][col] = mixed_column[::-1][row]
+
+        nb_movement += 1
         objRefresh()
         print('you clicked on down')
+
+
+    print(nb_movement)
+
+
+
+
+# Random number générator
+
+
+
 
 # -------------------------------------------------------------------------------
 # window size
