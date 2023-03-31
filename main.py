@@ -98,7 +98,7 @@ def click_on_letter(event):
         print('you clicked on down')
         nb_movement += 1
 
-    score_affichage.config(text= f" Voici le nombre de mouvement {nb_movement}")
+    score_affichage.config(text=f" Voici le nombre de mouvement {nb_movement}")
 
 
 # Mouvement checker
@@ -127,11 +127,13 @@ def objrefresh():
                 labels[line][col].config(text="", bg='#e6e6f1')
 
 # Win, lose function for game
+
+
 def table_state():
     empty_positions = []
     for i in range(4):
         if 2048 in grid_2048[i]:
-            answer = messagebox.askquestion(title="Felicitation !", message="Vous avez gagné ! On recommence ?")
+            answer = messagebox.askquestion(title="Felicitation !", message="T'as gagné ! On recommence ?")
             print(answer)
             if answer == "yes":
                 reset_game()
@@ -146,7 +148,7 @@ def table_state():
         if moveable:
             return "Other"
         else:
-            answer = messagebox.askquestion(title="Dommage tu as perdu", message="On recommence ?")
+            answer = messagebox.askquestion(title="Tu as perdus", message="Veux tu recommencer ?")
             if answer == "yes":
                 reset_game()
                 objrefresh()
@@ -163,7 +165,7 @@ def generate_random_value():
         state = table_state()
         if state == "Space":
             if grid_2048[random_pos_row][random_pos_col] == 0:
-                grid_2048[random_pos_row][random_pos_col] = random.randint(1,2) * 2
+                grid_2048[random_pos_row][random_pos_col] = random.randint(1, 2) * 2
                 objrefresh()  # Go to "position refresh" function
                 break
             else:
@@ -200,7 +202,7 @@ top_frame.pack()
 middle_frame = Frame(main_window)
 middle_frame.pack()
 
-score_affichage = Label(top_frame, text= f" Voici le nombre de mouvement {nb_movement}", width=30, height=15)
+score_affichage = Label(top_frame, text=f" Voici le nombre de mouvement {nb_movement}", width=30, height=15)
 score_affichage.grid(row=0, column=0)
 
 # Defining center of screen
