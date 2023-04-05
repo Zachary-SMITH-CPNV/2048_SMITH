@@ -217,7 +217,7 @@ window.geometry("+{}+{}".format(x_left, y_top))
 
 # Variable for base of window
 
-grid_2048 = [[1024, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+grid_2048 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 labels = [[None, None, None, None], [None, None, None, None], [None, None, None, None], [None, None, None, None]]
 # Dictionary for colors
 
