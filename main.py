@@ -1,7 +1,7 @@
 # 2048 V03
 # Author : Zachary Smith
 # Classe : SC-C1a
-# Last modification: 16.03.2023
+# Last modification: 06.04.2023
 
 # Modules imported
 from tkinter import *
@@ -12,18 +12,21 @@ from tkinter import messagebox
 
 # Fonction for number combining
 def mix(list, rev):
-    # Delete zero
+    # remove zero
     for obj in list:
         if 0 in list:
             list.remove(0)
+    # Checks the list and defines numbers that moved, and empty positions as zero
     for obj in range(len(list) - 1):
         if list[obj] == list[obj + 1]:
             list[obj] += list[obj + 1]
             list[obj + 1] = 0
+    # removes zeros from list, to not show up in labels
     for obj in list:
         if 0 in list:
             list.remove(0)
     if rev:
+        # Checks the list and defines numbers that moved, and empty positions as zero
         totalnumbers = 4 - len(list)
         while totalnumbers != 0:
             totalnumbers -= 1
@@ -39,7 +42,7 @@ def mix(list, rev):
 nb_movement = 0
 
 
-# function for movements, left,right,uo,down,
+# function for movements, left,right,up,down,
 
 def click_on_letter(event):
     global nb_movement
@@ -101,7 +104,7 @@ def click_on_letter(event):
     score_affichage.config(text=f" Voici le nombre de mouvement {nb_movement}")
 
 
-# Mouvement checker
+# Mouvement checker, for counting
 def movement_checker():
     for row in range(4):
         for col in range(4):
@@ -114,7 +117,7 @@ def movement_checker():
     return False
 
 
-# Refresh grid
+# Refresh of grid
 def objrefresh():
     for line in range(len(grid_2048)):
         for col in range(len(grid_2048[line])):
@@ -174,7 +177,7 @@ def generate_random_value():
             break
 
 
-# Restart game, buton
+# Restart game, button
 def reset_game():
     global grid_2048
     grid_2048 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
